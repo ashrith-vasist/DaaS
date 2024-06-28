@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+{% block content %}
+<head>
+  <title>Docker as a Service</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+
+<body>
+  <main>
+    <section class="image-carousel">
+      <div id="image1" class="carousel-image active">
+        <a class="prev" href="#image3">&#10094;</a>
+        <img src="{{ url_for('static', filename='images/Docker1.png') }}" alt="Docker Image1">
+        <a class="next" href="#image2">&#10095;</a>
+      </div>
+      <div id="image2" class="carousel-image">
+        <a class="prev" href="#image1">&#10094;</a>
+        <img src="{{ url_for('static', filename='images/Docker2.png') }}" alt="Docker Image2">
+        <a class="next" href="#image3">&#10095;</a>
+      </div>
+      <div id="image3" class="carousel-image">
+        <a class="prev" href="#image2">&#10094;</a>
+        <img src="{{ url_for('static', filename='images/Docker3.png') }}" alt="Docker Image3">
+        <a class="next" href="#image1">&#10095;</a>
+      </div>
+    </section>
+    <br><br><br>
+    <div class="container">
+        <h2>Services Offered</h2>
+      </div>
+    <br>
+    <section class="buttons-section">
+      <div class="container">
+        <div class="buttons">
+          <a href="{{url_for('CreateContainer')}}">Create Container</a>
+          <a href="{{url_for('pullImage')}}">Pull Image</a>
+          <a href="{{url_for('list_images')}}">Images List</a>
+          <a href="{{url_for('list_containers')}}">Containers List</a>
+          <a href="{{url_for('createDockerfile')}}">Dockerfile</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="text-section">
+      <div class="container">
+        <h3>Create Container</h3>
+        <p>Creating a <a href="https://docs.docker.com/reference/cli/docker/container/">Docker container</a> involves selecting a <a href="https://docs.docker.com/reference/cli/docker/image/ls/">Docker image</a>, specifying configuration settings such as networking and environment variables, and using Docker commands or APIs to instantiate the container. This process provides a lightweight, isolated environment that encapsulates applications and their dependencies, ensuring consistency and facilitating efficient deployment across different computing environments.</p>
+        <p>Inorder to use you need to entre a custom container name and an image, refer the official <a href="https://docs.docker.com/trusted-content/official-images/">docker hub </a>  docker hub to get the image names </p>
+        
+        <br><br>
+        <h3>Pull Image</h3>
+        <p> <a href="https://docs.docker.com/reference/cli/docker/image/pull/">Pulling an image</a> in Docker means downloading a pre-configured package from a registry, such as Docker Hub, containing all necessary components to run an application or service.</p>
+        <br><br>
+
+        <h3>List Images</h3>
+        <p>Listing Docker images involves retrieving a catalog of available templates containing application configurations and dependencies for containerized deployments. This process helps developers and operators easily identify and manage resources across different environments, ensuring efficient application deployment and maintenance.</p>
+
+        <br><br>
+
+        <h3>List Containers</h3>
+        <p>Listing Docker containers involves querying the Docker host to retrieve information about running or stopped container instances. Each container provides a lightweight, isolated runtime environment for applications, independent of the host system. This functionality allows developers and operators to monitor and manage containers, facilitating tasks like starting, stopping, and inspecting instances. It ensures efficient resource management and operational control across varied computing environments.</p>
+
+        <br><br>
+        <h3>Generate Dockerfile</h3>
+        <p>A <a href="https://docs.docker.com/reference/dockerfile/">Dockerfile</a> is a script-like text file used to automate the creation of Docker images. It defines the environment and configuration of a Docker container by specifying base images, dependencies, and commands to execute during image build. Dockerfiles ensure consistent and reproducible deployments across different computing environments, enhancing efficiency and reliability in application management with Docker containers.</p>
+        <p>This generates basic dockerfile, you just need to entre the image name and other specific information</p>
+      </div>
+    </section>
+  </main>
+  <br><br><br>
+  <footer>
+    <div class="footer-content">
+        <div class="left-content">
+            <p>Email: abc@gmail.com</p>
+            <p>Phone: +91 23456 78901</p>
+        </div>
+        <div class="right-content">
+            <p>&copy; 2024 Docker as a Service. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const images = document.querySelectorAll('.carousel-image');
+      const totalImages = images.length;
+  
+      images.forEach((image, index) => {
+        const next = image.querySelector('.next');
+        const prev = image.querySelector('.prev');
+  
+        next.addEventListener('click', () => {
+          images[index].classList.remove('active');
+          images[(index + 1) % totalImages].classList.add('active');
+        });
+  
+        prev.addEventListener('click', () => {
+          images[index].classList.remove('active');
+          images[(index - 1 + totalImages) % totalImages].classList.add('active');
+        });
+      });
+    });
+  </script>
+  <script>
+    // Only push state to /login when user logs out
+    function pushLoginState() {
+        window.history.pushState(null, '', '/login');
+    }
+
+    window.addEventListener('popstate', function(event) {
+        // You may want to handle other cases here
+        window.history.pushState(null, '', '/login');
+    });
+</script>
+</body>
+{% endblock %}

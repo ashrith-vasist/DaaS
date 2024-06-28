@@ -1,0 +1,65 @@
+/* login.css */
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth; /* Smooth scrolling behavior */
+}
+.container {
+    max-width: 360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .bottom {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .bottom a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .alert {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  

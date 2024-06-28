@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='List.css') }}">
+
+<div class="repo-data-container">
+    <table class="repo-data-table">
+        <thead>
+            <tr>
+                <th>Container ID</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Names</th>
+                <th>Stop</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for con in containers %}
+            <tr>
+                <td>{{ con.id }}</td>
+                <td>{{ con.image.id }}</td>
+                <td>{{ con.status }}</td>
+                <td>{{ con.name }}</td>
+                <td><a href="javascript:void(0);" onclick="confirmStop('{{ con.id }}', '{{ con.name }}')">Stop</a></td>
+                <td><a href="javascript:void(0);" onclick="confirmRemoval('{{ con.id }}', '{{ con.name }}')">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var message = "{{ message }}";
+        if (message) {
+            alert(message);
+        }
+    });
+
+    function confirmRemoval(containerId, containerName) {
+        var message = `Do you want to remove the container with name ${containerName} and id ${containerId}?`;
+        if (confirm(message)) {
+            window.location.href = `/RemoveContainer?container_id=${containerId}&container_name=${containerName}`;
+        }
+    }
+
+    function confirmStop(containerID, containerName) {
+        var message = `Do you want to stop the container with name ${containerName} and id ${containerID}?`;
+        if (confirm(message)) {
+            window.location.href = `/StopContainer?container_id=${containerID}&container_name=${containerName}`;
+        }
+    }
+</script>
+{% endblock %}

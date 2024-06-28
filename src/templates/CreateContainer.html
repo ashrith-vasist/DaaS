@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block content %}
+<br><br><br><br>
+<link rel="stylesheet" href="{{ url_for('static', filename='DashBoard.css') }}">
+<form action="/CreateContainer" method="POST">
+    <div class="dockeRun-container">      
+        <h2>Create Container</h2>
+        <div class="form-group">
+            <label for="image_name">Image</label>
+            <p class="instruction-text">If existing image, put the image ID; else, use the image name.</p>
+            <input type="text" id="image_name" name="image_name" placeholder="Check the image names from Docker hub to confirm">
+        </div>
+        <div class="form-group">
+            <label for="container_name">Container name</label>
+            <input type="text" id="container_name" name="container_name" placeholder="Container name">
+        </div>
+        <button type="submit" class="add-container-button">Create container</button>
+    </div>
+</form>
+
+{% if message %}
+    <div class="messages">
+        {% for msg in messages.success %}
+            <div class="alert alert-success">{{ msg }}</div>
+        {% endfor %}
+        {% for msg in messages.erro %}
+            <div class="alert alert-danger">{{ msg }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- JavaScript code here if required -->
+
+{% endblock content %}

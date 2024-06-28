@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='List.css') }}">
+<body>
+    <div class="repo-data-container">
+        <table class="repo-data-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Tag</th>
+                    <th>Image ID</th>
+                    <th>Size</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for image in images %}
+                <tr>
+                    <td>{{ image.image_name }}</td>
+                    <td>{{ image.image_tag }}</td>
+                    <td>{{ image.image_id }}</td>
+                    <td>{{ image.size }}</td>
+                    <td>
+                        {% if image.has_container %}
+                            <span class="text-warning">Warning: Cannot delete (dependent container exists)</span>
+                        {% else %}
+                            <a href="#" onclick="confirmDelete('{{ image.image_id }}')">Remove Image</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var message = "{{ message }}";
+            if (message) {
+                alert(message);             
+            }
+        });
+
+        function confirmDelete(image_id) {
+            var confirmMessage = "Are you sure you want to delete the image?";
+            if (confirm(confirmMessage)) {
+                window.location.href = `/removeImage?image_id=${image_id}`;
+            }
+        }
+    </script>
+</body>
+{% endblock %}

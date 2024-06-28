@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  header .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  a {
+    text-decoration: none;
+  }
+  header nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  header nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .disabled-link {
+    pointer-events: none;
+    color: rgb(80, 80, 80);
+    cursor: default;
+  }
+  

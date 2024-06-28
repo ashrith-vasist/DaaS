@@ -1,0 +1,130 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; /* Smooth scrolling behavior */
+}
+
+/* Main content styling */
+main {
+    padding-top: 100px; /* Ensure main content starts below fixed header */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Image carousel styling */
+.image-carousel {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+    overflow: hidden;
+}
+
+.carousel-image {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-image img {
+    width: 100%;
+    height: 100%; /* Ensure images fill the carousel height */
+}
+
+.carousel-image.active {
+    display: block;
+    position: relative;
+}
+
+.carousel-image .prev,
+.carousel-image .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
+.carousel-image .prev {
+    left: 10px;
+}
+
+.carousel-image .next {
+    right: 10px;
+}
+
+/* Buttons section styling */
+.buttons-section {
+    color: white;
+    padding: 20px;
+    text-align: center; /* Center align the buttons */
+}
+
+.buttons-section .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons-section .buttons a {
+    color: white;
+    text-decoration: none;
+    padding: 20px; /* Increased padding for bigger buttons */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #007bff; /* Blue background */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+    width: calc(25% - 20px); /* Calculate width to fit 4 buttons with space between */
+    margin-right: 20px; /* Margin between buttons */
+    white-space: nowrap; /* Ensure button text stays on one line */
+}
+
+.buttons-section .buttons a:last-child {
+    margin-right: 0; /* Remove margin from last button */
+}
+
+.buttons-section .buttons a:hover {
+    background-color: white;
+    color: #007bff; /* Blue text on hover */
+}
+
+/* Text section styling */
+.text-section {
+    padding: 20px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #007bff; /* Blue background for footer */
+    color: white;
+    text-align: center;
+    padding: 10px 0; /* Adjust padding for better spacing */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* Distribute content evenly */
+    align-items: center; /* Center align items vertically */
+    max-width: 800px; /* Limit width to prevent excessive stretching */
+    margin: 0 auto; /* Center content horizontally */
+}
+
+.left-content {
+    text-align: left; /* Align content to the left */
+    margin-left: 20px; /* Add some margin for spacing */
+}
+
+.left-content p {
+    margin: 5px 0; /* Adjust spacing between paragraphs */
+}
+
+.right-content {
+    text-align: right; /* Align content to the right */
+    margin-right: 20px; /* Add some margin for spacing */
+}
