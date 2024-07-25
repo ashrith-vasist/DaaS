@@ -35,11 +35,11 @@ def load_user(user_id):
 
 # MySQL configuration
 db_config = {
-    'user': 'root',
-    'password': 'Ash@2003',
+    'user': 'username',
+    'password': 'password',
     'host': 'localhost',
-    'port': '3306',
-    'database': 'user_system'
+    'port': 'portnumber',
+    'database': 'databasename'
 }
 
 # Function to create the table
